@@ -1,13 +1,27 @@
 ﻿
-<!DOCTYPE html>
+@{
+    ViewBag.Title = "Home";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <h1> Welcome to my World </h1>
-    <div> You can Register through this Link <a href="/Home/RegForm">Register</a></div>
-</body>
-</html>
+<h1> Welcome to my Application </h1>
+<button onclick="startAjax()" class="btn btn-success">Ajax</button>
+@Html.ActionLink("download", "TestActionResult","Home")
+@Html.Action("TestActionResult")
+
+@section Scripts {
+    <script>
+        function startAjax() {
+            $.ajax({
+                url: "/home/TestActionResult",
+                type: "Get",
+                success : function(res, status, xhr) {
+                    console.log(res);
+                },
+                error: function (xhr, status, err) {
+                    console.log(err);
+                }
+            })
+        }
+    </script>
+}
+

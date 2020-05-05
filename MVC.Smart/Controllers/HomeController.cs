@@ -15,24 +15,47 @@ namespace MVC.Smart.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public ViewResult RegForm()
+        [ChildActionOnly]
+        public PartialViewResult TestActionResult()
         {
-            return View();
+            return PartialView("_TestPartial");
         }
 
-        [HttpPost]
-        public ViewResult RegForm(Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                ModelContext ctx = new ModelContext();
-                ctx.Employees.Add(employee);
-                ctx.SaveChanges();
-                return View("Welcome", employee);
-            }
 
-            return View();
-        }
+        //public FilePathResult TestActionResult()
+        //{
+        //    return File("~/page.html", "text/html","mypage.html");
+        //}
+
+        //public FilePathResult TestActionResult()
+        //{
+        //    return File("~/page.html", "text/html", "mypage.html");
+        //}
+
+        //public JavaScriptResult TestActionResult()
+        //{
+        //    return JavaScript("alert('hi')");
+        //}
+
+        //public JsonResult TestActionResult()
+        //{
+        //    var x = new Employee
+        //    {
+        //        Id = 1,
+        //        Name = "Osama",
+        //        Salary = 2000
+        //    };
+        //    return Json(x, JsonRequestBehavior.AllowGet);
+        //}
+
+        //public RedirectToRouteResult TestActionResult()
+        //{
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+        //public RedirectResult TestActionResult()
+        //{
+        //    return Redirect("https://www.google.com");
+        //}
     }
 }
