@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace MVC.Smart.Controllers
 {
     public class HomeController : Controller
     {
-
+       
         public ViewResult Index()
         {
             return View();
@@ -23,10 +24,12 @@ namespace MVC.Smart.Controllers
         [HttpPost]
         public ViewResult RegForm(Employee employee)
         {
-            if (employee != null && employee.Name != null && employee.Email != null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Name = employee.Name;
-                return View("Welcome");
+                ModelContext ctx = new ModelContext();
+                ctx.Employees.Add(employee);
+                ctx.SaveChanges();
+                return View("Welcome", employee);
             }
 
             return View();

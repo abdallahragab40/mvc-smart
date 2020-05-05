@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Employee
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -6,21 +7,36 @@
     <title>RegForm</title>
 </head>
 <body>
-    <form method="post">
-        <br />
-        Name : <input type="text" name="name" />
-        Email : <input type="text" name="email" />
-        Phone : <input type="text" name="phone" />
-        <br />
-        <br />
-        <label for="choice">Will you attend ?</label>
-        <select id="choice">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-            <option value="maybe">Maybe</option>
-        </select>
-        <br />
-        <input type="submit" value="Submit RSVP" />
-    </form>
-</body>
+    <h1>Register Form</h1>
+
+
+    @using (@Html.BeginForm("RegForm", "Home"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Salary)
+            @Html.TextBoxFor(m => m.Salary, new {@class = "form-control"})
+        </div>
+
+
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.Gender)
+                @Html.RadioButtonFor(m => m.Gender, "Male") Male
+                @Html.RadioButtonFor(m => m.Gender, "Female") Female
+            </div>*@
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+    }
+
+    </body>
 </html>
