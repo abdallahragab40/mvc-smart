@@ -6,36 +6,44 @@
     <title>MVC Smart | @ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .input-validation-error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark ">
-    
-    <div class="collapse container navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                @Html.ActionLink("MVC Smart", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </li>
-            <li class="nav-item">
-                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
-            </li>
-            <li class="nav-item">
-                @Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "navbar-brand" })
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="container body-content mt-3">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - ITI Smart</p>
-            </footer>
-        </div>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark ">
 
-        <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-        @RenderSection("Scripts", false);
+        <div class="collapse container navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    @Html.ActionLink("MVC Smart", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "navbar-brand" })
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container body-content mt-3">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ITI Smart</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("Scripts", false);
 </body>
 </html>

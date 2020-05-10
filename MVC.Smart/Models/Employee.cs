@@ -22,8 +22,13 @@ namespace MVC.Smart.Models
         public string Email { get; set; }
 
         
+        [MaxLength(15)]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         public Gender Gender { get; set; }
         [Range(1200, 50000)]
+        [DataType(DataType.Currency)]
         public int Salary { get; set; }
 
         [StringLength(256)]

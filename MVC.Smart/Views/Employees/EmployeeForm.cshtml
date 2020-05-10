@@ -1,13 +1,13 @@
 ﻿@model Employee
 
 @{
-    ViewBag.Title = "Edit Employee";
+    ViewBag.Title = ViewBag.Action + " Employee";
 }
 
 <br />
-<h2>Edit New Employee</h2>
+<h2>@ViewBag.Action New Employee</h2>
 <hr />
-@using (@Html.BeginForm("Edit", "Employees"))
+@using (@Html.BeginForm())
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
@@ -19,6 +19,12 @@
         @Html.LabelFor(m => m.Email)
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
@@ -38,10 +44,12 @@
         @Html.EnumDropDownListFor(m => m.Gender, "Select Gender", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Gender, null, new { @class = "text-danger" })
     </div>
-
+    if (ViewBag.Action == "Edit")
+    {
     @Html.HiddenFor(m => m.Id)
+    }
 
-    <button type="submit" value="edit" class="btn btn-primary">Save</button>
+    <button type="submit" value="@ViewBag.Action" class="btn btn-primary">Save</button>
 
     @Html.ActionLink("Back to List", "Index", "Employees", null, new { @class = "btn btn-light" })
 }
